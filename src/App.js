@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import axiosService from './Services/axiosServices';
+// import './App.css';
 
 function App() {
+
+  const [poems, setPoems] = useState([])
+
+  
+  useEffect(() => {
+    axiosService.getAll()
+      .then(items => {
+        setPoems(items)
+      })
+  },
+  [])
+
   return (
     <div className="App">
+
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h2> POETRY </h2>
       </header>
+
+      <ol>
+        {poems.map(poem => 
+          <li key={poem.id}> {poem.title} {poem.author} {poem.text} {poem.votes} </li>  
+        )}
+      </ol>
+
     </div>
   );
 }
