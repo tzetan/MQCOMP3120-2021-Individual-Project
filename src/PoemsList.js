@@ -17,10 +17,11 @@ const PoemsList = ({poem}) => {
                 </thead>
                 <tbody>
                     {poem.map(poem => 
-                        <tr>
+                        <tr key={poem.id}>
                             <td> {poem.title} </td>
                             <td> {poem.author} </td>
                             <td> {poem.votes} </td>
+                            <td> <ReactMarkdown children={poem.text} /> </td>
                             <td> vote </td>
                         </tr>
                     )}

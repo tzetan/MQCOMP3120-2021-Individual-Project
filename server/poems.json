@@ -4,7 +4,6 @@
             "id": 0,
             "title": "Campervan",
             "author": "Bob Bobalooba",
-            "authorid": 0,
             "text": "__Lorem__ ipsum dolor sit amet,  \nconsectetur adipiscing elit,  \nsed do eiusmod tempor incididunt ut  \nlabore et dolore magna aliqua.  ",
             "votes": 3
           },
@@ -12,7 +11,6 @@
             "id": 1,
             "title": "Dreams",
             "author": "Langston Hughes",
-            "authorid": 1,
             "text": "Hold fast to dreams  \nFor if dreams die  Life is a broken-winged bird  \nThat cannot fly.  \nHold fast to dreams  \nFor when dreams go  \nLife is a barren field  \nFrozen with snow.",
             "votes": 10
           },
@@ -20,7 +18,6 @@
             "id": 2,
             "title": "Still Here",
             "author": "Langston Hughes",
-            "authorid": 1,
             "text": "I been scarred and battered.  \nMy hopes the wind done scattered.  \nSnow has friz me,  \nSun has baked me,  \nLooks like between 'em they done  \nTried to make me  \nStop laughin', stop lovin', stop livin'--  \nBut I don't care!  \nI'm still here!",
             "votes": 2
           }

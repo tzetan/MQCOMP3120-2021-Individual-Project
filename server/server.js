@@ -15,6 +15,34 @@ app.get('/api/poems', (request, response) => {
 })
 
 
+app.post('/api/poems', (request, response) => {
+    const body = request.body
+    
+    const generateID = () => {
+        const maxID = poems.poems.length > 0
+        ? Math.max(...poems.poems.map(p => p.id))
+        : 0
+        
+        return maxID + 1
+    }
+
+    if (!body.title || !body.author || !body.text) {
+        return response.status(400).json({
+            error: 'title, author or text is missing'
+        })
+    }
+
+    const newPoem = {
+        id: generateID(),
+        title: body.title,
+        author: body.author,
+        text: body.text,
+        votes: 0,
+    }
+
+    poems.poems = poems.poems.concat(newPoem)
+    response.json(newPoem)
+})
 
 const PORT = 3001
 app.listen(PORT)
