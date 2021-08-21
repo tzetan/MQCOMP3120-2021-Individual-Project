@@ -14,10 +14,17 @@ app.get('/api/poems', (request, response) => {
     response.json(poems.poems)
 })
 
+app.get('/api/poems/:id', (request, response) => {
+    const id = Number(request.params.id)
+
+    const poem = poems.poems.find(poem => poem.id === id)
+
+    response.json(poem)
+})
 
 app.post('/api/poems', (request, response) => {
     const body = request.body
-    
+
     const generateID = () => {
         const maxID = poems.poems.length > 0
         ? Math.max(...poems.poems.map(p => p.id))
@@ -42,6 +49,19 @@ app.post('/api/poems', (request, response) => {
 
     poems.poems = poems.poems.concat(newPoem)
     response.json(newPoem)
+})
+
+app.put('/api/poems/:id', (request, response) => {
+    const id = Number(request.params.id)
+    // const body = request.body
+    const poem = poems.poems.find(poem => poem.id === id)
+    const updatedPoem = {...poem, votes: poem.votes + 1}
+
+    poems.poems = poems.poems.map(item => 
+            item.id !== updatedPoem.id ? item : updatedPoem
+    )
+
+    response.json(updatedPoem)
 })
 
 const PORT = 3001

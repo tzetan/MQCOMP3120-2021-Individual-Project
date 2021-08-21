@@ -26,6 +26,17 @@ function App() {
       })
   }
 
+  const addVote = (poem) => {
+    const newPoem = {...poem, votes: poem.votes + 1}
+
+    axiosService.updateVotes(newPoem)
+      .then(item => {
+        const newPoems = poems.map(poem => 
+            poem.id !== item.id ? poem : item)
+        setPoems(newPoems)
+      })
+  }
+
   useEffect(() => {
     axiosService.getList()
       .then(items => {
@@ -45,7 +56,7 @@ function App() {
         <h2> POETRY </h2>
       </header>
 
-      <PoemsList poem={poems} />
+      <PoemsList poem={poems} handleVote={addVote} />
       {/* <ol> {poems.map((poem) => (<PoemsList key={poem.id} poem={poem} />))} </ol> */}
       {/* <ReactMarkdown children={markdown} /> */}
 

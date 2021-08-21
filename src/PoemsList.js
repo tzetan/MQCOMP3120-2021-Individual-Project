@@ -2,7 +2,7 @@ import React from "react";
 import ReactMarkdown from 'react-markdown'
 
 
-const PoemsList = ({poem}) => {
+const PoemsList = ({poem, handleVote}) => {
 
     return (
         <div>
@@ -16,15 +16,17 @@ const PoemsList = ({poem}) => {
                     </tr>
                 </thead>
                 <tbody>
+                    <>
                     {poem.map(poem => 
                         <tr key={poem.id}>
                             <td> {poem.title} </td>
                             <td> {poem.author} </td>
-                            <td> {poem.votes} </td>
                             <td> <ReactMarkdown children={poem.text} /> </td>
-                            <td> vote </td>
+                            <td> {poem.votes} </td>
+                            <td> <button onClick={() => handleVote(poem)}> vote </button> </td>
                         </tr>
                     )}
+                    </>
                 </tbody>
             </table>
         </div>

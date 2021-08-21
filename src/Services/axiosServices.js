@@ -8,10 +8,14 @@ const getList = () => {
         .then(response => response.data)
 }
 
-const addList = (newItem) => {
-    return axios.post(baseURL, newItem)
+const addList = (newPoem) => {
+    return axios.post(baseURL, newPoem)
         .then(response => response.data)
 }
 
+const updateVotes = (newPoem) => {
+    return axios.put(baseURL + "/" + newPoem.id, newPoem)
+        .then(response => response.data)
+}
 
-export default { getList, addList }
+export default { getList, addList, updateVotes }
