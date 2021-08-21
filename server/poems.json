@@ -5,7 +5,7 @@
             "title": "Campervan",
             "author": "Bob Bobalooba",
             "authorid": 0,
-            "text": "`__Lorem__ ipsum dolor sit amet,  consectetur adipiscing elit,  sed do eiusmod tempor incididunt ut  labore et dolore magna aliqua.  `",
+            "text": "__Lorem__ ipsum dolor sit amet,  \nconsectetur adipiscing elit,  \nsed do eiusmod tempor incididunt ut  \nlabore et dolore magna aliqua.  ",
             "votes": 3
           },
           {
@@ -13,7 +13,7 @@
             "title": "Dreams",
             "author": "Langston Hughes",
             "authorid": 1,
-            "text": "`Hold fast to dreams  For if dreams die  Life is a broken-winged bird  That cannot fly.  Hold fast to dreams  For when dreams go  Life is a barren field  Frozen with snow.`",
+            "text": "Hold fast to dreams  \nFor if dreams die  Life is a broken-winged bird  \nThat cannot fly.  \nHold fast to dreams  \nFor when dreams go  \nLife is a barren field  \nFrozen with snow.",
             "votes": 10
           },
           {
@@ -21,7 +21,7 @@
             "title": "Still Here",
             "author": "Langston Hughes",
             "authorid": 1,
-            "text": "`I been scarred and battered.  My hopes the wind done scattered.  Snow has friz me,  Sun has baked me,  Looks like between 'em they done  Tried to make me  Stop laughin', stop lovin', stop livin'--  But I don't care!  I'm still here!`",
+            "text": "I been scarred and battered.  \nMy hopes the wind done scattered.  \nSnow has friz me,  \nSun has baked me,  \nLooks like between 'em they done  \nTried to make me  \nStop laughin', stop lovin', stop livin'--  \nBut I don't care!  \nI'm still here!",
             "votes": 2
           }
     ]

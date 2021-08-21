@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown'
+import PoemsList from './PoemsList';
 import axiosService from './Services/axiosServices';
 // import './App.css';
 
@@ -15,6 +17,9 @@ function App() {
   },
   [])
 
+  const markdown = `Just a link: https://reactjs.com.  
+  this is the 2nd line`
+
   return (
     <div className="App">
 
@@ -22,11 +27,9 @@ function App() {
         <h2> POETRY </h2>
       </header>
 
-      <ol>
-        {poems.map(poem => 
-          <li key={poem.id}> {poem.title} {poem.author} {poem.text} {poem.votes} </li>  
-        )}
-      </ol>
+      <PoemsList poem={poems} />
+      {/* <ol> {poems.map((poem) => (<PoemsList key={poem.id} poem={poem} />))} </ol> */}
+      <ReactMarkdown children={markdown} />
 
     </div>
   );
