@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown'
 
 const PoemsList = ({poem, handleVote}) => {
 
+    poem.sort((a, b) => a.votes < b.votes ? 1 : -1)
+
     return (
         <div>
                 {/* {poem.title} {poem.author}  {poem.votes}   */}
