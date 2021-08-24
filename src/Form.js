@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import {Redirect, useHistory, useRouteMatch, useParams } from "react-router-dom"
 
-
-const Form = ({ submitForm }) => {
+const Form = ({ submitForm, poems }) => {
 
     const [newTitle, setNewTitle] = useState('')
     const [newAuthor, setNewAuthor] = useState('')
     const [newText, setNewText] = useState('')
+    const history = useHistory()
 
     const formHandler = (event) => {
         event.preventDefault()
@@ -14,6 +15,9 @@ const Form = ({ submitForm }) => {
         setNewTitle('')
         setNewAuthor('')
         setNewText('')
+        
+        console.log(poems)
+        history.push(`/poems/${poems.length}`)
     }
 
     return(
@@ -44,7 +48,7 @@ const Form = ({ submitForm }) => {
                     onChange={(inputText) => setNewText(inputText.target.value)}
                 />
 
-                <button type="submit"> Add </button>
+                <button type="submit" > Add </button>
 
             </div>
 

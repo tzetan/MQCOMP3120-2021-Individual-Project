@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown'
+import {BrowserRouter as Router, Switch, Route, Link, useHistory, withRouter} from "react-router-dom"
 import Form from './Form';
+import Poem from './Poem';
 import PoemsList from './PoemsList';
 import axiosService from './Services/axiosServices';
 // import './App.css';
@@ -8,9 +10,13 @@ import axiosService from './Services/axiosServices';
 function App() {
 
   const [poems, setPoems] = useState([])
+  const [submitted, setSubmitted] = useState(false)
+  const history = useHistory()
 
   
-  const addPoem = ({newTitle, newAuthor, newText}) => {
+  const addPoem = ({newTitle, newAuthor, newText, path}) => {
+
+
     const newPoem = {
       title: newTitle,
       author: newAuthor,
@@ -20,11 +26,40 @@ function App() {
 
     axiosService.addList(newPoem)
       .then(items => {
+        // history.push(`/poems/${items.id}`)
         console.log("POST response: ", items)
         setPoems([...poems, items])
+        // history.push("/")
         console.log("new poem added", newPoem)
+        setSubmitted(true)
+        // history.push("/")
+        console.log(submitted)
+        // path = `/poems/${items.id}`
       })
+      // .then(items =>{
+        // console.log("POST response: ", items)
+        // history.push(`/poems/${items.id}`)
+        // console.log(submitted)
+
+      // })
+      console.log(submitted)
+
+      // history.push("/")
+      // history.push(`/poems/${newPoem.id}`)
+    // if (submitted) {
+    //   return(
+    //     history.push(`/poems/${newPoem.id}`)
+    //   )
+    // }
+    // axiosService.getPoem(newPoem)
   }
+
+  // const clickHandler = () => {
+  //   history.push("/")
+  // }
+  // const navigateTo = (path) => {
+  //   history.push(path)
+  // }
 
   const addVote = (poem) => {
     const newPoem = {...poem, votes: poem.votes + 1}
@@ -50,20 +85,39 @@ function App() {
   // this is the 2nd line`
 
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
 
-      <header className="App-header">
-        <h2> POETRY </h2>
-      </header>
+        <div>
+          <Link to="/"> Home </Link>
+          <Link to="/form"> Form </Link>
+        </div>
+  
+        <header className="App-header">
+          <h2> POETRY </h2>
+        </header>
 
-      <PoemsList poem={poems} handleVote={addVote} />
-      {/* <ol> {poems.map((poem) => (<PoemsList key={poem.id} poem={poem} />))} </ol> */}
-      {/* <ReactMarkdown children={markdown} /> */}
+        <Switch>
+          
+          <Route path="/poems/:id">
+            <Poem poems={poems}/>
+          </Route>
 
-      <Form submitForm={addPoem}/>
+          <Route path="/form">
+            <Form poems={poems} submitForm={addPoem} />
+          </Route>
 
-    </div>
+          <Route path="/">
+            <PoemsList poems={poems} handleVote={addVote} />
+            {/* <ol> {poems.map((poem) => (<PoemsList key={poem.id} poem={poem} />))} </ol> */}
+            {/* <ReactMarkdown children={markdown} /> */}
+          </Route>
+
+        </Switch>
+  
+      </div>
+    </Router>
   );
 }
 
-export default App;
+export default withRouter(App);
