@@ -13,8 +13,7 @@ const poems = JSON.parse(rawData)
 
 app.get('/api/poems', (request, response) => {
 
-    // const reqHeader = request.headers
-    console.log(request.headers.bob)
+    // validates authentication of requests through special headers. Restricts authorization if these headers are not present
     if(!request.headers.bob || request.headers.bob !== "Bobalooba") {
         return response.status(401).json({error: "Unauthorized"})
     }
@@ -25,6 +24,7 @@ app.get('/api/poems', (request, response) => {
 app.get('/api/poems/:id', (request, response) => {
     const id = Number(request.params.id)
 
+    // validates authentication of requests through special headers. Restricts authorization if these headers are not present
     if(!request.headers.bob || request.headers.bob !== "Bobalooba") {
         return response.status(401).json({error: "Unauthorized"})
     }
@@ -45,14 +45,15 @@ app.post('/api/poems', (request, response) => {
         return maxID + 1
     }
 
+    // validates authentication of requests through special headers. Restricts authorization if these headers are not present
+    if(!request.headers.bob || request.headers.bob !== "Bobalooba") {
+        return response.status(401).json({error: "Unauthorized"})
+    }
+
     if (!body.title || !body.author || !body.text) {
         return response.status(400).json({
             error: 'title, author or text is missing'
         })
-    }
-
-    if(!request.headers.bob || request.headers.bob !== "Bobalooba") {
-        return response.status(401).json({error: "Unauthorized"})
     }
 
     const newPoem = {
@@ -73,6 +74,7 @@ app.post('/api/poems/:id', (request, response) => {
     const poem = poems.poems.find(poem => poem.id === id)
     const updatedPoem = {...poem, votes: poem.votes + 1}
 
+    // validates authentication of requests through special headers. Restricts authorization if these headers are not present
     if(!request.headers.bob || request.headers.bob !== "Bobalooba") {
         return response.status(401).json({error: "Unauthorized"})
     }

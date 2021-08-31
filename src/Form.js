@@ -53,7 +53,7 @@ const Form = ({ submitForm, poems }) => {
                             placeholder="title"
                             onChange={(inputText) => setNewTitle(inputText.target.value)}
                         />
-                        <span> {titleError} </span>
+                        <span style={{color: "red"}}> {titleError} </span>
                         <br/>
                 </div>
 
@@ -64,7 +64,7 @@ const Form = ({ submitForm, poems }) => {
                             placeholder="name"
                             onChange={(inputText) => setNewAuthor(inputText.target.value)}
                         />
-                        <span> {authorError} </span>
+                        <span style={{color: "red"}}> {authorError} </span>
                         <br/>
                 </div>
 
@@ -75,7 +75,7 @@ const Form = ({ submitForm, poems }) => {
                     onChange={(inputText) => setNewText(inputText.target.value)}
                 />
                 <br/>
-                <span> {textError} </span>
+                <span style={{color: "red"}}> {textError} </span>
                 <br/>
 
                 <button type="submit" > Add </button>

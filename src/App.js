@@ -37,6 +37,9 @@ function App() {
         console.log(submitted)
         // path = `/poems/${items.id}`
       })
+      .catch(() => {
+        alert("There was a problem adding the poem")
+      })
       // .then(items =>{
         // console.log("POST response: ", items)
         // history.push(`/poems/${items.id}`)
@@ -73,6 +76,9 @@ function App() {
         //updates poems state with newly added poem
         setPoems(newPoems)
       })
+      .catch(() => {
+        alert("There was a problem updating the upvotes")
+      })
   }
 
   //return and renders a list of poem records
@@ -82,6 +88,9 @@ function App() {
         console.log("we have a response", items)
         //updates empty state with poems retrieved from backend server
         setPoems(items)
+      })
+      .catch(() => {
+        alert("There was a problem listing the poems")
       })
   },
   [])
