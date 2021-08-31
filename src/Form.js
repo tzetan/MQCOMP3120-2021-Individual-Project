@@ -1,23 +1,46 @@
 import React, { useState } from 'react';
 import {Redirect, useHistory, useRouteMatch, useParams } from "react-router-dom"
 
+
+/*
+    Form component which displays the form and handles the submission 
+*/
 const Form = ({ submitForm, poems }) => {
 
-    const [newTitle, setNewTitle] = useState('')
-    const [newAuthor, setNewAuthor] = useState('')
-    const [newText, setNewText] = useState('')
+    const [newTitle, setNewTitle] = useState("")
+    const [newAuthor, setNewAuthor] = useState("")
+    const [newText, setNewText] = useState("")
+
+    const [titleError, setTitleError] = useState("")
+    const [authorError, setAuthorError] = useState("")
+    const [textError, setTextError] = useState("")
+
     const history = useHistory()
+
+    const errorHandler = () => {
+        setTitleError( titleError.length>0 ? "" : "Please set a valid Poem Title")
+        setAuthorError( authorError.length>0 ? "" : "Please set a valid Poem Author")
+        setTextError( textError.length>0 ? "" : "Please add Poem Text")
+        return ((newTitle.length>0) ? true : false)
+    }
 
     const formHandler = (event) => {
         event.preventDefault()
 
-        submitForm({newTitle, newAuthor, newText})
-        setNewTitle('')
-        setNewAuthor('')
-        setNewText('')
-        
-        console.log(poems)
-        history.push(`/poems/${poems.length}`)
+        if (errorHandler()) {
+
+            //handles form submission with the newly added field values
+            submitForm({newTitle, newAuthor, newText})
+    
+            //resets the fields' values
+            setNewTitle('')
+            setNewAuthor('')
+            setNewText('')
+            
+            console.log(poems)
+            //navigates to the newly added poem page
+            history.push(`/poems/${poems.length}`)
+        }
     }
 
     return(
@@ -30,6 +53,8 @@ const Form = ({ submitForm, poems }) => {
                             placeholder="title"
                             onChange={(inputText) => setNewTitle(inputText.target.value)}
                         />
+                        <span> {titleError} </span>
+                        <br/>
                 </div>
 
                 <div className="six columns">
@@ -39,6 +64,8 @@ const Form = ({ submitForm, poems }) => {
                             placeholder="name"
                             onChange={(inputText) => setNewAuthor(inputText.target.value)}
                         />
+                        <span> {authorError} </span>
+                        <br/>
                 </div>
 
                 <label>  Poem Text:  </label>
@@ -47,6 +74,9 @@ const Form = ({ submitForm, poems }) => {
                     placeholder="text"
                     onChange={(inputText) => setNewText(inputText.target.value)}
                 />
+                <br/>
+                <span> {textError} </span>
+                <br/>
 
                 <button type="submit" > Add </button>
 

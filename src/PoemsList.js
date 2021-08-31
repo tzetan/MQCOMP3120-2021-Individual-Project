@@ -2,9 +2,13 @@ import React from "react";
 import ReactMarkdown from 'react-markdown'
 import {BrowserRouter as Router, Switch, Route, Link, useParams} from "react-router-dom"
 
-
+/*
+    Poem list component for displaying a list of poems in a table
+    Displays poem previews and clicking on the title or preview will navigate to individual poem page
+*/
 const PoemsList = ({poems, handleVote}) => {
 
+    //sorts the poems list in decending order
     poems.sort((a, b) => a.votes < b.votes ? 1 : -1)
 
     return (

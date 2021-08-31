@@ -5,17 +5,29 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+//load data from poems JSON file into memory
 const fs = require('fs')
-const poemsJSON = fs.readFileSync('server/poems.json')
-const poems = JSON.parse(poemsJSON)
+const rawData = fs.readFileSync('server/poems.json')
+const poems = JSON.parse(rawData)
 
 
 app.get('/api/poems', (request, response) => {
+
+    // const reqHeader = request.headers
+    console.log(request.headers.bob)
+    if(!request.headers.bob || request.headers.bob !== "Bobalooba") {
+        return response.status(401).json({error: "Unauthorized"})
+    }
+
     response.json(poems.poems)
 })
 
 app.get('/api/poems/:id', (request, response) => {
     const id = Number(request.params.id)
+
+    if(!request.headers.bob || request.headers.bob !== "Bobalooba") {
+        return response.status(401).json({error: "Unauthorized"})
+    }
 
     const poem = poems.poems.find(poem => poem.id === id)
 
@@ -39,6 +51,10 @@ app.post('/api/poems', (request, response) => {
         })
     }
 
+    if(!request.headers.bob || request.headers.bob !== "Bobalooba") {
+        return response.status(401).json({error: "Unauthorized"})
+    }
+
     const newPoem = {
         id: generateID(),
         title: body.title,
@@ -51,11 +67,15 @@ app.post('/api/poems', (request, response) => {
     response.json(newPoem)
 })
 
-app.put('/api/poems/:id', (request, response) => {
+app.post('/api/poems/:id', (request, response) => {
     const id = Number(request.params.id)
     // const body = request.body
     const poem = poems.poems.find(poem => poem.id === id)
     const updatedPoem = {...poem, votes: poem.votes + 1}
+
+    if(!request.headers.bob || request.headers.bob !== "Bobalooba") {
+        return response.status(401).json({error: "Unauthorized"})
+    }
 
     poems.poems = poems.poems.map(item => 
             item.id !== updatedPoem.id ? item : updatedPoem

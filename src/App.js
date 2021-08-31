@@ -14,6 +14,7 @@ function App() {
   const history = useHistory()
 
   
+  //adds a new poem to the poems list
   const addPoem = ({newTitle, newAuthor, newText, path}) => {
 
 
@@ -61,6 +62,7 @@ function App() {
   //   history.push(path)
   // }
 
+  //adds an upvote for the poem with specific id 
   const addVote = (poem) => {
     const newPoem = {...poem, votes: poem.votes + 1}
 
@@ -68,14 +70,17 @@ function App() {
       .then(item => {
         const newPoems = poems.map(poem => 
             poem.id !== item.id ? poem : item)
+        //updates poems state with newly added poem
         setPoems(newPoems)
       })
   }
 
+  //return and renders a list of poem records
   useEffect(() => {
     axiosService.getList()
       .then(items => {
         console.log("we have a response", items)
+        //updates empty state with poems retrieved from backend server
         setPoems(items)
       })
   },
