@@ -5,7 +5,7 @@ import Form from './Form';
 import Poem from './Poem';
 import PoemsList from './PoemsList';
 import axiosService from './Services/axiosServices';
-// import './App.css';
+import './App.css';
 
 function App() {
 
@@ -102,19 +102,21 @@ function App() {
     <Router>
       <div className="App">
 
-        <div>
-          <Link to="/"> Home </Link>
-          <Link to="/form"> Form </Link>
-        </div>
-  
         <header className="App-header">
-          <h2> POETRY </h2>
+          <h2> EXPRESSIVE POETRY </h2>
         </header>
+        
+        <nav>
+          <ul>
+            <li> <Link to="/"> Home </Link> </li>
+            <li> <Link to="/form"> Form </Link> </li>
+          </ul>
+        </nav>
 
         <Switch>
           
           <Route path="/poems/:id">
-            <Poem poems={poems}/>
+            <Poem poems={poems} handleVote={addVote}/>
           </Route>
 
           <Route path="/form">
@@ -122,7 +124,7 @@ function App() {
           </Route>
 
           <Route path="/">
-            <PoemsList poems={poems} handleVote={addVote} />
+            <PoemsList poems={poems} />
             {/* <ol> {poems.map((poem) => (<PoemsList key={poem.id} poem={poem} />))} </ol> */}
             {/* <ReactMarkdown children={markdown} /> */}
           </Route>

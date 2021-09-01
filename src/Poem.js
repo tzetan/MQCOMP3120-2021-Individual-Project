@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Switch, Route, Link, useParams,withRouter} from
 /*
     Poem component for displaying the content of each poem from poems list
 */
-const Poem = ({poems}) => {
+const Poem = ({poems, handleVote}) => {
     //gets id of selected poem and finds the matching with same id
     const id = Number(useParams().id)
     console.log(id)
@@ -15,13 +15,21 @@ const Poem = ({poems}) => {
 
     if (poem) {
         return(
-            <div> 
-                <ReactMarkdown children={poem.text} />
+            <div className="poem"> 
+                <table>
+                    <th> {poem.title} </th>
+                    <tr>
+                        <td>
+                            <ReactMarkdown children={poem.text} />
+                        </td>
+                    </tr>
+                    <button onClick={() => handleVote(poem)}> vote ({poem.votes}) </button>
+                </table>
                 
             </div>
         )
     }
-    return 'Not Found'
+    return <stan> This Poem does not exists</stan>
 }
 
 

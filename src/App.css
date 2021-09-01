@@ -1,38 +1,213 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  /* background-color: #80a1d4; */
+  /* padding-left: 100px;
+  padding-right: 100px; */
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
-.App-link {
-  color: #61dafb;
+/* navigation bar */
+ul {
+  background-color: #bfd7ff;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 12px 5px 14px 5px;
+  margin: auto;
+  list-style-type: none;
+  overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+li {
+  display: inline;
+}
+
+li a {
+  display: inline;
+  text-align: center;
+  padding: 10px 100px;
+  margin: auto;
+  list-style-type: none;
+  text-decoration: none;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+li a:hover {
+  background-color: #f4d35e;
+  color: black;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px 0 #fc814a, 0 4px 19px 0 #fc814a;
+}
+
+/* Poems list */
+table {
+  font-family: Montserrat, sans-serif;
+  border-collapse: collapse;
+  background: #e3d26f;
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+tr {
+  border-top: 2px solid #aeffd8;
+}
+
+th {
+  background-color: #aeffd8;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+}
+
+td {
+  text-align: center;
+  font-size: 16px;
+}
+
+td a:link {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+td a:visited {
+  color: #ebb9df;
+  text-decoration: none;
+  color: black;
+}
+
+td a:hover {
+  background-color: #bfd7ff;
+  padding: 3px;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 0 6px 10px 0 #49416d, 0 4px 10px 0 #49416d;
+}
+
+/* form */
+form {
+  font-family: "Lexend Deca";
+  font-size: 20px;
+  padding: 40px;
+  margin: 50px;
+  background-color: #b3f2dd;
+  border: 12px solid black;
+  border-radius: 12px;
+}
+
+input {
+  margin-bottom: 5px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+textarea {
+  padding: 10px;
+  min-height: 200px;
+  max-width: 700px;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-bottom: 0px;
+}
+
+span {
+  color: #ce2323;
+  font-size: 18px;
+}
+
+button {
+  margin-top: 20px;
+  background-color: #e3d26f;
+  font-family: "Lexend Deca";
+  font-size: 15px;
+  border: 2px solid black;
+  border-radius: 12px;
+  color: black;
+}
+
+button:hover {
+  background-color: #f4d35e;
+  color: black;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px 0 #fc814a, 0 4px 19px 0 #fc814a;
+}
+
+@media screen and (max-width: 1070px) {
+  form {
+    padding: 5;
+    margin: 20px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media screen and (min-width: 1161px) {
+  form {
+    margin-right: 100px;
+    margin-left: 50px;
+  }
+}
+
+@media screen and (min-width: 1510px) {
+  form {
+    margin-right: 300px;
+    margin-left: 200px;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  form {
+    margin-right: 400px;
+    margin-left: 300px;
+  }
+}
+
+/* Individual poem */
+.poem table {
+  min-width: 600px;
+  font-size: 19px;
+}
+
+.poem th {
+  font-size: 22px;
+}
+
+.poem td {
+  font-size: 19px;
+}
+
+.poem button {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 629px) {
+  .poem table {
+    padding: 5;
+    margin: 20px;
+    min-width: 0px;
   }
 }

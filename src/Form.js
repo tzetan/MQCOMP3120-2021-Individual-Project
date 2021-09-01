@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {Redirect, useHistory, useRouteMatch, useParams } from "react-router-dom"
 
-
 /*
     Form component which displays the form and handles the submission 
 */
@@ -18,9 +17,9 @@ const Form = ({ submitForm, poems }) => {
     const history = useHistory()
 
     const errorHandler = () => {
-        setTitleError( titleError.length>0 ? "" : "Please set a valid Poem Title")
-        setAuthorError( authorError.length>0 ? "" : "Please set a valid Poem Author")
-        setTextError( textError.length>0 ? "" : "Please add Poem Text")
+        setTitleError( titleError.length>0 ? "" : "Please enter a Poem Title")
+        setAuthorError( authorError.length>0 ? "" : "Please enter a Poem Author")
+        setTextError( textError.length>0 ? "" : "Please add a Poem Text")
         return ((newTitle.length>0) ? true : false)
     }
 
@@ -44,38 +43,38 @@ const Form = ({ submitForm, poems }) => {
     }
 
     return(
-        <form onSubmit={formHandler}>
+        <form onSubmit={formHandler} className="form">
             <div className="row">
                 <div className="six columns">
                     <label> Poem Title: </label>
                         <input
                             value={newTitle}
-                            placeholder="title"
+                            placeholder="Insert Title"
                             onChange={(inputText) => setNewTitle(inputText.target.value)}
                         />
-                        <span style={{color: "red"}}> {titleError} </span>
                         <br/>
+                        <span> {titleError} </span>
                 </div>
 
                 <div className="six columns">
                     <label> Poem Author:  </label>
                         <input  
                             value={newAuthor}
-                            placeholder="name"
+                            placeholder="Insert Name"
                             onChange={(inputText) => setNewAuthor(inputText.target.value)}
                         />
-                        <span style={{color: "red"}}> {authorError} </span>
                         <br/>
+                        <span> {authorError} </span>
                 </div>
 
                 <label>  Poem Text:  </label>
                 <textarea className="u-full-width"
                     value={newText}
-                    placeholder="text"
+                    placeholder="Insert Text"
                     onChange={(inputText) => setNewText(inputText.target.value)}
                 />
                 <br/>
-                <span style={{color: "red"}}> {textError} </span>
+                <span> {textError} </span>
                 <br/>
 
                 <button type="submit" > Add </button>
