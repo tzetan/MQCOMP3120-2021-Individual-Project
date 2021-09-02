@@ -20,10 +20,10 @@ const Form = ({ submitForm, poems }) => {
     
     // checks if title, author and text are entered
     const errorHandler = () => {
-        setTitleError( titleError.length>0 ? "" : "Please enter a Poem Title")
-        setAuthorError( authorError.length>0 ? "" : "Please enter a Poem Author")
-        setTextError( textError.length>0 ? "" : "Please add a Poem Text")
-        return ((newTitle.length>0) ? true : false)
+        setTitleError( newTitle.length>0 ? "" : "Please enter a Poem Title")
+        setAuthorError( newAuthor.length>0 ? "" : "Please enter a Poem Author")
+        setTextError( newText.length>0 ? "" : "Please add a Poem Text")
+        return ((newTitle.length>0) && (newAuthor.length>0) && (newText.length>0) ? true : false)
     }
 
     const formHandler = (event) => {
@@ -56,7 +56,7 @@ const Form = ({ submitForm, poems }) => {
                             onChange={(inputText) => setNewTitle(inputText.target.value)}
                         />
                         <br/>
-                        <span> {titleError} </span>
+                        {titleError.length>0 ? <span> {titleError} </span> : <></>}
                 </div>
 
                 <div className="six columns">
@@ -67,7 +67,7 @@ const Form = ({ submitForm, poems }) => {
                             onChange={(inputText) => setNewAuthor(inputText.target.value)}
                         />
                         <br/>
-                        <span> {authorError} </span>
+                        {authorError.length>0 ? <span> {authorError} </span> : <></>}
                 </div>
 
                 <label>  Poem Text:  </label>
@@ -77,7 +77,7 @@ const Form = ({ submitForm, poems }) => {
                     onChange={(inputText) => setNewText(inputText.target.value)}
                 />
                 <br/>
-                <span> {textError} </span>
+                {textError.length>0 ? <span> {textError} </span> : <></>}
                 <br/>
 
                 <button type="submit" > Add </button>

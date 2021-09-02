@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const baseURL = "http://localhost:3001/api/poems"
+const baseURL = "/api/poems"
 const header = {
     headers: {
         'bob': 'Bobalooba'

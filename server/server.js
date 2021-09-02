@@ -4,6 +4,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
+app.use(express.static('build'))
 
 // load data from poems JSON file into memory
 const fs = require('fs')
@@ -94,5 +95,5 @@ app.post('/api/poems/:id', (request, response) => {
 })
 
 // run server on port 3001
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT)

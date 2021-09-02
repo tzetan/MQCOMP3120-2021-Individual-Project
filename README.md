@@ -13,106 +13,77 @@ Clone this repository and you will need `node` and `npm` installed in your devic
 Installation:
 `npm install`
 
-To start the server:
+To start the server:\
 `npm start` runs the app in the development mode.\
-Open [http://localhost:3000] to view it in the browser.
+Open `http://localhost:3000` to view it in the browser.
 
-To access the backend server:
+To access the backend server:\
 `npm run server` runs the server in the development mode.\
-Open [http://localhost:3001/api/poems] to view it in the browser.
+Open `http://localhost:3001/api/poems` to view it in the browser.
 
 ## React Front End
 
 The front end web application is written using React and supports the following functionality:
 
 - The home page displays a list of poem previews in a table, showing the title, the author and the first few lines of each poem.
+
 - The poems displayed are those that are most highly rated (most votes).
+
 - There is a link in the navigation bar to a form to add a new poem, once the fields are completed and the user clicks submit, the form is sent to the backend, if all goes well, the new poem is shown on it's own page
+
+- When a form is submitted with one of the fields empty, error messages are handled and displayed on the form
+
 - Clicking on a poem title or "read more..." navigates to a page for that poem showing the whole text of the poem
+
 - Each poem page has an upvote button to record votes for the poem, clicking the button sends a request to the API to add to the votes for the poem
+
 - Poem texts are written using Markdown and when displayed on the pages, the Markdown is interpreted to give a nice layout (eg. using the `react-markdown` package)
   > Note that to create line breaks, end a line with two spaces
+
+### Axios
+
+In order to retrieve data from the backend API server, Axios is used to send requests to communicate with server running on PORT 3001
+
+Methods such as `get` and `post` are used through Axios to return promises. Each of these promises contain two conditions:
+
+- The promise is fulfilled - the interaction with server is completed and further actions can be completed
+- The promise is rejected - an error has occured and catched to display an error message
+
+### Design - CSS
+
+This application uses a base structure design from skeleton at http://getskeleton.com. Tools such as grid, tables and forms are used. Other features are implemented using custom CSS.
 
 ## Express API Backend Server
 
 The Express server implements a simple API for poetry sharing. It has the following endpoints:
 
 - **GET /api/poems** - returns a list of poem records
+
 - **GET /api/poems/:id** - returns the record for the poem with the given **id**
+
 - **POST /api/poems** - adds a new poem to the collection, POST body is the poem JSON without the **id** or **votes** fields, response includes the new poem id
+
 - **POST /api/poems/:id** - adds an upvote for the poem with the given **id**
 
 Poems records have the following fields:
 
 - **id** is a unique integer id
+
 - **author**, **title**, **text** are strings of text
+
 - **votes** is an integer count of upvotes for the poem; the remaining fields are text.
+
+### Authentication
+
+There is no authentication on the server, but to provide just a little bit of security to the application, every request requires a special header:
+
+`bob: Bobalooba`
+
+A request sent from the frontend must contain header field named 'bob' with the value 'Bobalooba'. The backend server then checks if this header is present. If not, the API returns a 401 Unauthorized response.
+
+## Deployment
 
 ## Acknowledgement / Reference
 
-<!-- ## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
+- **Skeleton CSS Framework** - http://getskeleton.com
+- **Heroku** - https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
