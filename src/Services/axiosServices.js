@@ -2,40 +2,33 @@ import axios from "axios";
 
 
 const baseURL = "http://localhost:3001/api/poems"
+const header = {
+    headers: {
+        'bob': 'Bobalooba'
+    }
+}
 
-//return a list of poem records
+// return a list of poem records
 const getList = () => {
-    return axios.get(baseURL, {
-        headers: {
-            'bob': 'Bobalooba'
-        }
-    })
+    return axios.get(baseURL, header)
         .then(response => response.data)
 }
 
-//return the specific poem with given id
+// return the specific poem with given id
 const getPoem = (newPoem) => {
     return axios.get(baseURL + "/" + newPoem.id)
         .then(response => response.data)
 }
 
-//adds a new poem to the poems list
+// adds a new poem to the poems list
 const addList = (newPoem) => {
-    return axios.post(baseURL, newPoem, {
-        headers: {
-            'bob': 'Bobalooba'
-        }
-    })
+    return axios.post(baseURL, newPoem, header)
         .then(response => response.data)
 }
 
-//adds an upvote for the poem with specific id
+// adds an upvote for the poem with specific id
 const updateVotes = (newPoem) => {
-    return axios.post(baseURL + "/" + newPoem.id, newPoem, {
-        headers: {
-            'bob': 'Bobalooba'
-        }
-    })
+    return axios.post(baseURL + "/" + newPoem.id, newPoem, header)
         .then(response => response.data)
 }
 

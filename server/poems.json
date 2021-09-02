@@ -20,6 +20,34 @@
             "author": "Langston Hughes",
             "text": "I been scarred and battered.  \nMy hopes the wind done scattered.  \nSnow has friz me,  \nSun has baked me,  \nLooks like between 'em they done  \nTried to make me  \nStop laughin', stop lovin', stop livin'--  \nBut I don't care!  \nI'm still here!",
             "votes": 2
+          },
+          {
+            "id": 3,
+            "title": "The Moon is Blue - Rondeau",
+            "author": "Penelope Allen",
+            "text": "The moon is blue and I am too.  \nFarewell to arms that were not true.  \nbecause, enclosed in pink, he’s bleak  \nand all that’s left is double speak  \nwith words about one rendezvous.  \n  \nHe’s moved along without a clue  \nthere’s pain galore he’s put me though.  \nHow can this man inflame my pique?  \nThe moon is blue.  \n  \nI gave him more than he was due.  \nMy first mistake was nothing new.  \nI borrowed love from mild and meek  \nwhile he complained I was a freak.  \nfor grieving fling that’s just a screw.  \nThe moon is blue.",
+            "votes": 286
+          },
+          {
+            "id": 4,
+            "title": "Amazing Grace",
+            "author": "John Newton",
+            "text": "Amazing grace! (how sweet the sound!)  \nThat sav'd a wretch like me!  \nI once was lost, but now am found;  \nWas blind, but now I see.  \n  \n'Twas grace that taught my heart to fear,  \nAnd grace my fears reliev'd;  \n How precious did that grace appear,  \nThe hour I first believ'd!  \n  \nThro' many dangers, toils, and snares,  \nI have already come;  \n'Tis grace has brought me safe thus far,  \nAnd grace will lead me home.  \n  \nThe Lord has promis'd good to me,  \nHis word my hope secures;  \nHe will my shield and portion be,  \nAs long as life endures.  \n  \nYes, when this flesh and heart shall fail,  \nAnd mortal life shall cease;  \nI shall possess, within the veil,  \nA life of joy and peace.  \n  \nThis earth shall soon dissolve like snow,  \nThe sun forbear to shine;  \nBut God, who call'd me here below,  \nWill be for ever mine.",
+            "votes": 3
+          },
+          {
+            "id": 5,
+            "title": "Shall I Compare Thee to a Summer's Day?",
+            "author": "William Shakespeare",
+            "text": "Shall I compare thee to a summer’s day?  \nThou art more lovely and more temperate.  \nRough winds do shake the darling buds of May,  \nAnd summer’s lease hath all too short a date.  \nSometime too hot the eye of heaven shines,  \nAnd often is his gold complexion dimmed;  \nAnd every fair from fair sometime declines,  \nBy chance, or nature’s changing course, untrimmed;  \nBut thy eternal summer shall not fade,  \nNor lose possession of that fair thou ow’st,  \nNor shall death brag thou wand’rest in his shade,  \nWhen in eternal lines to Time thou grow’st.  \nSo long as men can breathe, or eyes can see,  \nSo long lives this, and this gives life to thee.",
+            "votes": 386
+          },
+          {
+            "id": 6,
+            "title": "No Man Is An Island",
+            "author": "John Donne",
+            "text": "No man is an island,  \nEntire of itself,  \nEvery man is a piece of the continent,  \nA part of the main.  \nIf a clod be washed away by the sea,  \nEurope is the less.  \nAs well as if a promontory were.  \nAs well as if a manor of thy friend’s  \nOr of thine own were:  \nAny man’s death diminishes me,  \nBecause I am involved in mankind,  \nAnd therefore never send to know for whom the bell tolls;  \nIt tolls for thee.",
+            "votes": 156
           }
     ]
 }

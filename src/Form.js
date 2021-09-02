@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
-import {Redirect, useHistory, useRouteMatch, useParams } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 /*
     Form component which displays the form and handles the submission 
 */
 const Form = ({ submitForm, poems }) => {
 
+    // set values and updates its initial state
     const [newTitle, setNewTitle] = useState("")
     const [newAuthor, setNewAuthor] = useState("")
     const [newText, setNewText] = useState("")
 
+    // set error values and updates its initial state
     const [titleError, setTitleError] = useState("")
     const [authorError, setAuthorError] = useState("")
     const [textError, setTextError] = useState("")
 
     const history = useHistory()
-
+    
+    // checks if title, author and text are entered
     const errorHandler = () => {
         setTitleError( titleError.length>0 ? "" : "Please enter a Poem Title")
         setAuthorError( authorError.length>0 ? "" : "Please enter a Poem Author")
@@ -26,18 +29,18 @@ const Form = ({ submitForm, poems }) => {
     const formHandler = (event) => {
         event.preventDefault()
 
+        // only submits form if there is no error
         if (errorHandler()) {
 
-            //handles form submission with the newly added field values
+            // handles form submission with the newly added field values
             submitForm({newTitle, newAuthor, newText})
     
-            //resets the fields' values
+            // resets the fields' values
             setNewTitle('')
             setNewAuthor('')
             setNewText('')
             
-            console.log(poems)
-            //navigates to the newly added poem page
+            // navigates to the newly added poem page
             history.push(`/poems/${poems.length}`)
         }
     }
@@ -70,7 +73,7 @@ const Form = ({ submitForm, poems }) => {
                 <label>  Poem Text:  </label>
                 <textarea className="u-full-width"
                     value={newText}
-                    placeholder="Insert Text"
+                    placeholder="Insert Text (Double space or enter for line breaks)"
                     onChange={(inputText) => setNewText(inputText.target.value)}
                 />
                 <br/>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown'
-import {BrowserRouter as Router, Switch, Route, Link, useHistory, withRouter} from "react-router-dom"
+import {BrowserRouter as Router, Switch, Route, Link, withRouter} from "react-router-dom"
 import Form from './Form';
 import Poem from './Poem';
 import PoemsList from './PoemsList';
@@ -9,13 +8,12 @@ import './App.css';
 
 function App() {
 
+  // sets state as empty array
   const [poems, setPoems] = useState([])
-  const [submitted, setSubmitted] = useState(false)
-  const history = useHistory()
 
   
   //adds a new poem to the poems list
-  const addPoem = ({newTitle, newAuthor, newText, path}) => {
+  const addPoem = ({newTitle, newAuthor, newText}) => {
 
 
     const newPoem = {
@@ -27,43 +25,13 @@ function App() {
 
     axiosService.addList(newPoem)
       .then(items => {
-        // history.push(`/poems/${items.id}`)
-        console.log("POST response: ", items)
+        // adds the new poem into the database once promise is fulfilled
         setPoems([...poems, items])
-        // history.push("/")
-        console.log("new poem added", newPoem)
-        setSubmitted(true)
-        // history.push("/")
-        console.log(submitted)
-        // path = `/poems/${items.id}`
       })
       .catch(() => {
         alert("There was a problem adding the poem")
       })
-      // .then(items =>{
-        // console.log("POST response: ", items)
-        // history.push(`/poems/${items.id}`)
-        // console.log(submitted)
-
-      // })
-      console.log(submitted)
-
-      // history.push("/")
-      // history.push(`/poems/${newPoem.id}`)
-    // if (submitted) {
-    //   return(
-    //     history.push(`/poems/${newPoem.id}`)
-    //   )
-    // }
-    // axiosService.getPoem(newPoem)
-  }
-
-  // const clickHandler = () => {
-  //   history.push("/")
-  // }
-  // const navigateTo = (path) => {
-  //   history.push(path)
-  // }
+    }
 
   //adds an upvote for the poem with specific id 
   const addVote = (poem) => {
@@ -73,7 +41,7 @@ function App() {
       .then(item => {
         const newPoems = poems.map(poem => 
             poem.id !== item.id ? poem : item)
-        //updates poems state with newly added poem
+        //updates poems state with newly added poem once promise is fulfilled
         setPoems(newPoems)
       })
       .catch(() => {
@@ -85,8 +53,7 @@ function App() {
   useEffect(() => {
     axiosService.getList()
       .then(items => {
-        console.log("we have a response", items)
-        //updates empty state with poems retrieved from backend server
+        //updates empty state with poems retrieved from backend server once promise is fulfilled
         setPoems(items)
       })
       .catch(() => {
@@ -95,8 +62,6 @@ function App() {
   },
   [])
 
-  // const markdown = `Just a link: https://reactjs.com.  
-  // this is the 2nd line`
 
   return (
     <Router>
@@ -125,8 +90,6 @@ function App() {
 
           <Route path="/">
             <PoemsList poems={poems} />
-            {/* <ol> {poems.map((poem) => (<PoemsList key={poem.id} poem={poem} />))} </ol> */}
-            {/* <ReactMarkdown children={markdown} /> */}
           </Route>
 
         </Switch>
