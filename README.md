@@ -6,7 +6,7 @@
 
 This application implements a simple poetry sharing service using an Express web server and a React front end. It is implemented as an assignment in learning these technologies and is not intended to be a real web-facing service. However, this application is published to the web on Heroku as part of this assignment.
 
-### Installation and Setup Instructions
+### Installation and Setup Instructions:
 
 Clone this repository and you will need `node` and `npm` installed in your device
 
@@ -14,15 +14,15 @@ Installation:
 
 `npm install`
 
-To start the server:\
+To start the server:
 
-`npm start` runs the app in the development mode.\
+`npm start` runs the app in the development mode.
 
 Open `http://localhost:3000` to view it in the browser.
 
-To access the backend server:\
+To access the backend server:
 
-`npm run server` runs the server in the development mode.\
+`npm run server` runs the server in the development mode.
 
 Open `http://localhost:3001/api/poems` to view it in the browser.
 
@@ -36,11 +36,11 @@ The front end web application is written using React and supports the following 
 
 - There is a link in the navigation bar to a form to add a new poem, once the fields are completed and the user clicks submit, the form is sent to the backend, if all goes well, the new poem is shown on it's own page
 
-- When a form is submitted with one of the fields empty, error messages are handled and displayed on the form
+- When a form is submitted with one of the fields empty, error messages are handled and displayed on the form.
 
-- Clicking on a poem title or "read more..." navigates to a page for that poem showing the whole text of the poem
+- Clicking on a poem title or "read more..." navigates to individual page for that poem showing the whole text of the poem
 
-- Each poem page has an upvote button to record votes for the poem, clicking the button sends a request to the API to add to the votes for the poem
+- Each poem page has an upvote button to record votes for the poem, and shows the amount of vote the poem has. Clicking the button sends a request to the API to add to the votes for the poem
 
 - Poem texts are written using Markdown and when displayed on the pages, the Markdown is interpreted to give a nice layout (eg. using the `react-markdown` package)
   > Note that to create line breaks, end a line with two spaces
@@ -56,7 +56,7 @@ Methods such as `get` and `post` are used through Axios to return promises. Each
 
 ### Design - CSS
 
-This application uses a base structure design from skeleton at http://getskeleton.com. Tools such as grid, tables and forms are used. Other features are implemented using custom CSS.
+This application uses a base structure design from skeleton at http://getskeleton.com. Tools such as grid, tables and forms are used. Other design features are implemented through personal custom CSS.
 
 ## Express API Backend Server
 
