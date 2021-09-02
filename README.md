@@ -11,14 +11,19 @@ This application implements a simple poetry sharing service using an Express web
 Clone this repository and you will need `node` and `npm` installed in your device
 
 Installation:
+
 `npm install`
 
 To start the server:\
+
 `npm start` runs the app in the development mode.\
+
 Open `http://localhost:3000` to view it in the browser.
 
 To access the backend server:\
+
 `npm run server` runs the server in the development mode.\
+
 Open `http://localhost:3001/api/poems` to view it in the browser.
 
 ## React Front End
@@ -82,6 +87,31 @@ There is no authentication on the server, but to provide just a little bit of se
 A request sent from the frontend must contain header field named 'bob' with the value 'Bobalooba'. The backend server then checks if this header is present. If not, the API returns a 401 Unauthorized response.
 
 ## Deployment
+
+This application is deployed through Heroku, the process of publishing is documented as:
+
+- Make sure that `Node.js`, `npm` and `Git` are installed with the latest version, and register a Heroku account
+
+- Make sure that the Express server is serving on the production build of the application through:
+
+  - `npm run build`
+
+- Install Heroku CLI to login and push application to account
+
+- To login to Heroku through the Heroku CLI:
+
+  - `heroku login` which navigates to Heroku website in browser
+
+- A Procfile file is then needed to be added in the root directory and the following command is added:
+
+  - `web: node server/server.js`
+
+- Create the Heroku application by entering `heroku create` in the command
+
+- `git push heroku master` would then push the application to Heroku app
+
+- To open the app:
+  - `heroku open`
 
 ## Acknowledgement / Reference
 

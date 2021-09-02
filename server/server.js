@@ -94,6 +94,6 @@ app.post('/api/poems/:id', (request, response) => {
     response.json(updatedPoem)
 })
 
-// run server on port 3001
+// run server on port 3001 if undefined or port defined in environment variable port
 const PORT = process.env.PORT || 3001
 app.listen(PORT)
