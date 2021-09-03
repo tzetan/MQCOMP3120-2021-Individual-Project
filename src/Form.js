@@ -80,7 +80,7 @@ const Form = ({ submitForm, poems }) => {
                 {textError.length>0 ? <span> {textError} </span> : <></>}
                 <br/>
 
-                <button type="submit" > Add </button>
+                <button type="submit"  > Add </button>
 
             </div>
 

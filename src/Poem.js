@@ -26,16 +26,13 @@ const Poem = ({poems, handleVote}) => {
                                 <ReactMarkdown children={poem.text} />
                                 <button onClick={() => handleVote(poem)}> vote ({poem.votes}) </button>
                             </td>
-                            
-                            
                         </tr>
                     </tbody>
                 </table>
-                
             </div>
         )
     }
-    return <stan> This Poem does not exists</stan>
+    return null
 }
 
 
